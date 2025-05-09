@@ -13,7 +13,7 @@ export const { getStaticPaths, GET } = OGImageRoute({
   pages: pages,
 
   getImageOptions: (_path, page: { title: string; description: string | undefined }) => ({
-    title: page.title === 'Expressive Code' ? '' : page.title,
+    title: page.title === 'Eigen Documentation' ? '' : page.title,
     description: page.description ?? '',
     bgImage: {
       path: `./src/pages/open-graph/_images/background.png`,
