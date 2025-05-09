@@ -1,0 +1,286 @@
+---
+title: Components
+description: Explore the components available in Starlight.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+import { Code } from 'starlight-theme-nova/components';
+import { CodeFile } from 'starlight-theme-nova/components';
+import { LinkButton } from 'starlight-theme-nova/components';
+import { LinkCard } from 'starlight-theme-nova/components';
+import { FileTree } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { CodeTabItem, CodeTabs } from 'starlight-theme-nova/components';
+
+## Cards
+
+<CardGrid stagger>
+  <Card title="Update content" icon="pencil">
+    Edit `src/content/docs/index.mdx` to see this page change.
+  </Card>
+  <Card title="Add new content" icon="add-document">
+    Add Markdown or MDX files to `src/content/docs` to create new pages.
+  </Card>
+  <Card title="Configure your site" icon="setting">
+    Edit your `sidebar` and other config in `astro.config.mjs`.
+  </Card>
+  <Card title="Read the docs" icon="open-book">
+    Learn more in [the Starlight Docs](https://starlight.astro.build/).
+  </Card>
+</CardGrid>
+
+### Usage
+
+```jsx
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+  <Card title="Card Title" icon="pencil">
+    Card content goes here
+  </Card>
+  <Card title="Another Card" icon="add-document">
+    More content here
+  </Card>
+</CardGrid>;
+```
+
+## Aside
+
+<Aside>Some content in an aside.</Aside>
+<Aside type="caution">Some cautionary content.</Aside>
+<Aside type="tip">
+  Other content is also supported in asides. ```js console.log('A code snippet, for example.') ```
+  Some inline markdown like [link](https://example.com), `inline code`, **bold**, _italic_, and
+  ~~strikethrough~~.
+  <details>
+    <summary>A collapsible disclosure</summary>
+    Some collapsible content.
+  </details>
+</Aside>
+<Aside type="danger">Do not give your password to anyone.</Aside>
+<Aside type="danger" title="Watch out!">
+  A warning aside *with* a custom title.
+</Aside>
+
+### Usage
+
+```jsx
+import { Aside } from '@astrojs/starlight/components'
+
+<Aside>Default aside content here.</Aside>
+<Aside type="note">Note content here.</Aside>
+<Aside type="tip">Tip content here.</Aside>
+<Aside type="caution">Caution content here.</Aside>
+<Aside type="danger">Danger content here.</Aside>
+<Aside type="danger" title="Custom Title">
+  Aside with custom title here.
+</Aside>
+```
+
+## Badge
+
+<Badge text="Note" variant="note" />
+<Badge text="Success" variant="success" />
+<Badge text="Tip" variant="tip" size="small" />
+<Badge text="Caution" variant="caution" size="medium" />
+<Badge text="Danger" variant="danger" size="large" />
+<Badge text="Default" />
+
+### Usage
+
+```jsx
+import { Badge } from '@astrojs/starlight/components'
+
+<Badge text="Default" />
+<Badge text="Note" variant="note" />
+<Badge text="Success" variant="success" />
+<Badge text="Tip" variant="tip" size="small" />
+<Badge text="Caution" variant="caution" size="medium" />
+<Badge text="Danger" variant="danger" size="large" />
+```
+
+## Code
+
+<Code lang="js" code={`console.log('Hello, world!')`} />
+
+### Usage
+
+```jsx
+import { Code } from 'starlight-theme-nova/components';
+
+<Code lang="js" code={`console.log('Hello, world!')`} />;
+```
+
+## Code File
+
+<CodeFile path="package.json" />
+
+### Usage
+
+```jsx
+import { CodeFile } from 'starlight-theme-nova/components';
+
+<CodeFile path="package.json" />;
+```
+
+## Link Button
+
+<LinkButton href="/guide/getting-started/">Get started</LinkButton>
+<LinkButton href="/guide/markdown/" variant="secondary">
+  Markdown
+</LinkButton>
+<LinkButton href="https://docs.astro.build" variant="minimal" icon="external" iconPlacement="start">
+  Related: Astro
+</LinkButton>
+
+### Usage
+
+```jsx
+import { LinkButton } from 'starlight-theme-nova/components'
+
+<LinkButton href="/guide/getting-started/">Get started</LinkButton>
+<LinkButton href="/guide/markdown/" variant="secondary">
+  Markdown
+</LinkButton>
+<LinkButton
+  href="https://docs.astro.build"
+  variant="minimal"
+  icon="external"
+  iconPlacement="start"
+>
+  Related: Astro
+</LinkButton>
+```
+
+## Link Card
+
+<LinkCard
+  title="Internationalization"
+  href="/guides/i18n/"
+  description="Configure Starlight to support multiple languages."
+/>
+
+### Usage
+
+```jsx
+import { LinkCard } from 'starlight-theme-nova/components';
+
+<LinkCard
+  title="Internationalization"
+  href="/guides/i18n/"
+  description="Configure Starlight to support multiple languages."
+/>;
+```
+
+## File Tree
+
+<FileTree>
+
+- astro.config.mjs
+- package.json
+- src
+  - components
+    - Header.astro
+    - Title.astro
+  - pages/
+
+</FileTree>
+
+### Usage
+
+```jsx
+import { FileTree } from '@astrojs/starlight/components';
+
+<FileTree>
+  - astro.config.mjs - package.json - src - components - Header.astro - Title.astro - pages/
+</FileTree>;
+```
+
+## Icon
+
+<Icon name="star" />
+<Icon name="starlight" label="The Starlight logo" />
+
+### Usage
+
+```jsx
+import { Icon } from '@astrojs/starlight/components';
+
+<Icon name="star" />
+<Icon name="starlight" label="The Starlight logo" />
+```
+
+You can find a complete list of all available icons in the [Starlight Icons Reference](https://starlight.astro.build/reference/icons/#all-icons).
+
+## Steps
+
+<Steps>
+
+1. Import the component into your MDX file:
+
+   ```js
+   import { Steps } from '@astrojs/starlight/components';
+   ```
+
+2. Wrap `<Steps>` around your ordered list items.
+
+</Steps>
+
+### Usage
+
+```jsx
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+  1. First step instructions here. 2. Second step instructions here. 3. Third step instructions
+  here.
+</Steps>;
+```
+
+## Tabs
+
+<Tabs>
+  <TabItem label="Stars">Sirius, Vega, Betelgeuse</TabItem>
+  <TabItem label="Moons">Io, Europa, Ganymede</TabItem>
+</Tabs>
+
+### Usage
+
+```jsx
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  <TabItem label="Stars">Sirius, Vega, Betelgeuse</TabItem>
+  <TabItem label="Moons">Io, Europa, Ganymede</TabItem>
+</Tabs>;
+```
+
+## Code Tabs
+
+<CodeTabs>
+  <CodeTabItem label="index.js" lang="js" code={`function () {\n  console.log('Hello, JS!')\n}`} />
+  <CodeTabItem
+    label="index.ts"
+    lang="ts"
+    code={`function (): void {\n  console.log('Hello, TS!')\n}`}
+  />
+</CodeTabs>
+
+### Usage
+
+```jsx
+import { CodeTabItem, CodeTabs } from 'starlight-theme-nova/components';
+
+<CodeTabs>
+  <CodeTabItem label="index.js" lang="js" code={`function () {\n  console.log('Hello, JS!')\n}`} />
+  <CodeTabItem
+    label="index.ts"
+    lang="ts"
+    code={`function (): void {\n  console.log('Hello, TS!')\n}`}
+  />
+</CodeTabs>;
+```
