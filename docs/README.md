@@ -1,4 +1,4 @@
-# Eigen Documenatations
+# Eigen Documentations
 
 ## 🚀 Project Structure
 
