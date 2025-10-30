@@ -1,0 +1,203 @@
+# PagesCMS Configuration for Eigen Documentation
+# Documentation: https://pagescms.org/docs/configuration
+
+# Media configuration - for images and other assets
+media:
+  input: docs/public
+  output: /
+
+# Content collections
+content:
+  # Main documentation collection
+  - name: docs
+    label: Documentation
+    type: collection
+    path: docs/src/content/docs/docs
+    view:
+      fields: [title, description]
+      primary: title
+      sort: [title]
+      default:
+        sort: title
+        order: asc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: string
+        required: false
+      - name: sidebar
+        label: Sidebar Settings
+        type: object
+        required: false
+        fields:
+          - name: order
+            label: Order
+            type: number
+          - name: label
+            label: Label
+            type: string
+          - name: badge
+            label: Badge
+            type: object
+            fields:
+              - name: text
+                label: Text
+                type: string
+              - name: variant
+                label: Variant
+                type: select
+                options:
+                  values: [note, tip, caution, danger, success]
+      - name: body
+        label: Content
+        type: rich-text
+        required: true
+
+  # Norwegian documentation collection
+  - name: docs-no
+    label: Documentation (Norwegian)
+    type: collection
+    path: docs/src/content/docs/no
+    view:
+      fields: [title, description]
+      primary: title
+      sort: [title]
+    fields:
+      - name: title
+        label: Tittel
+        type: string
+        required: true
+      - name: description
+        label: Beskrivelse
+        type: string
+        required: false
+      - name: sidebar
+        label: Sidebar Innstillinger
+        type: object
+        required: false
+        fields:
+          - name: order
+            label: Rekkefølge
+            type: number
+          - name: label
+            label: Etikett
+            type: string
+      - name: body
+        label: Innhold
+        type: rich-text
+        required: true
+
+  # Homepage configuration
+  - name: homepage
+    label: Homepage
+    type: file
+    path: docs/src/content/docs/index.mdx
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: string
+      - name: template
+        label: Template
+        type: select
+        options:
+          values: [doc, splash]
+          default: splash
+      - name: hero
+        label: Hero Section
+        type: object
+        required: false
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: tagline
+            label: Tagline
+            type: string
+          - name: image
+            label: Image
+            type: object
+            fields:
+              - name: light
+                label: Light Mode Image
+                type: image
+              - name: dark
+                label: Dark Mode Image
+                type: image
+              - name: alt
+                label: Alt Text
+                type: string
+          - name: actions
+            label: Actions
+            type: block
+            list: true
+            blocks:
+              - name: action
+                label: Action Button
+                fields:
+                  - name: text
+                    label: Text
+                    type: string
+                    required: true
+                  - name: link
+                    label: Link
+                    type: string
+                    required: true
+                  - name: icon
+                    label: Icon
+                    type: string
+                  - name: variant
+                    label: Variant
+                    type: select
+                    options:
+                      values: [primary, secondary, minimal]
+                      default: primary
+      - name: body
+        label: Content
+        type: rich-text
+
+  # Norwegian homepage
+  - name: homepage-no
+    label: Homepage (Norwegian)
+    type: file
+    path: docs/src/content/docs/no/index.mdx
+    fields:
+      - name: title
+        label: Tittel
+        type: string
+        required: true
+      - name: description
+        label: Beskrivelse
+        type: string
+      - name: template
+        label: Template
+        type: select
+        options:
+          values: [doc, splash]
+          default: splash
+      - name: hero
+        label: Hero-seksjon
+        type: object
+        required: false
+        fields:
+          - name: title
+            label: Tittel
+            type: string
+          - name: tagline
+            label: Slagord
+            type: string
+      - name: body
+        label: Innhold
+        type: rich-text
+
+# Global settings
+settings:
+  content:
+    merge: true
