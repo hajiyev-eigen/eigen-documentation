@@ -13,6 +13,7 @@ content:
     label: Documentation
     type: collection
     path: docs/src/content/docs/docs
+    format: md
     view:
       fields: [title, description]
       primary: title
